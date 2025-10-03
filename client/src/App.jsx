@@ -5,6 +5,7 @@ import EmployeeForm from "./components/EmployeeForm";
 import EmployeeTable from "./components/EmployeeTable";
 import ConfirmModal from "./components/ConfirmModal";
 import { Toaster, toast } from "react-hot-toast";
+import { Button } from "@headlessui/react";
 
 const API_URL = "http://localhost:5000/api/employees";
 
@@ -63,18 +64,29 @@ function App() {
     <div className="min-h-screen bg-gray-900 text-gray-100 p-6">
       <Toaster position="top-right" />
       <h1 className="text-3xl font-bold mb-6 text-center text-teal-400">
-        Employee Management
+        Employee Data Management
       </h1>
 
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Search Bar */}
-        <input
-          type="text"
-          placeholder="Search employees by name..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-full p-2 rounded-md bg-gray-800 text-gray-200 focus:ring-2 focus:ring-teal-400"
-        />
+        <div className="relative w-72">
+          <input
+            type="text"
+            placeholder="Search employees by name..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full p-2 pr-8 rounded-md bg-gray-800 text-gray-200 focus:ring-2 focus:ring-teal-400"
+          />
+          {search && (
+            <Button
+              onClick={() => setSearch("")}
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-200 cursor-pointer"
+            >
+              ✖
+            </Button>
+          )}
+        </div>
+
 
         <EmployeeForm
           onSave={handleSave}
