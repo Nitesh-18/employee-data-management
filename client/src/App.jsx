@@ -5,6 +5,7 @@ import EmployeeForm from "./components/EmployeeForm";
 import EmployeeTable from "./components/EmployeeTable";
 import ConfirmModal from "./components/ConfirmModal";
 import { Toaster, toast } from "react-hot-toast";
+import { Search, X } from "lucide-react";
 import { Button } from "@headlessui/react";
 
 const API_URL = "http://localhost:5000/api/employees";
@@ -70,19 +71,26 @@ function App() {
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Search Bar */}
         <div className="relative w-72">
+          {/* Search icon on left */}
+          <Search className="absolute left-2 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
+
           <input
             type="text"
             placeholder="Search employees by name..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full p-2 pr-8 rounded-md bg-gray-800 text-gray-200 focus:ring-2 focus:ring-teal-400"
+            className="w-full pl-8 pr-8 p-2 rounded-md bg-gray-800 text-gray-200 focus:ring-2 focus:ring-teal-400"
           />
+
+          {/* Clear (X) icon on right */}
           {search && (
             <Button
+              variant="ghost"
+              size="icon"
               onClick={() => setSearch("")}
-              className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-200 cursor-pointer"
+              className="absolute right-1 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-200 cursor-pointer"
             >
-              ✖
+              <X className="w-4 h-4" />
             </Button>
           )}
         </div>

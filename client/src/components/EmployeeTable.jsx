@@ -1,9 +1,9 @@
 // src/components/EmployeeTable.jsx
 function EmployeeTable({ employees, onEdit, onDelete }) {
   return (
-    <div className="overflow-x-auto bg-gray-800 rounded-xl shadow-md">
+    <div className="overflow-x-auto overflow-y-auto max-h-[400px] bg-gray-800 rounded-xl shadow-md">
       <table className="w-full border-collapse text-sm">
-        <thead className="bg-gray-700 text-teal-300">
+        <thead className="bg-gray-700 text-teal-300 sticky top-0 z-10">
           <tr>
             <th className="p-3 text-left">ID</th>
             <th className="p-3 text-left">Name</th>
@@ -52,6 +52,7 @@ function EmployeeTable({ employees, onEdit, onDelete }) {
         </tbody>
       </table>
     </div>
+
   );
 }
 
